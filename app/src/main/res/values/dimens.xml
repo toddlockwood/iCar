@@ -5,9 +5,10 @@
     <dimen name="item_car_title_textSize">16sp</dimen>
     <dimen name="item_car_description_textSize">14sp</dimen>
     <dimen name="item_car_content_padding">2sp</dimen>
-    <dimen name="item_car_corner_radius">2sp</dimen>
+    <dimen name="item_car_corner_radius">10sp</dimen>
     <dimen name="item_car_cv_elevation">2sp</dimen>
     <dimen name="item_car_main_marginStartEnd">3sp</dimen>
     <dimen name="item_member_marginBottom">3sp</dimen>
     <dimen name="item_car_image_padding">6sp</dimen>
+    <dimen name="car_description_textSize">25sp</dimen>
 </resources>

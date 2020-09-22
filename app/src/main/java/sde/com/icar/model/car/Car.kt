@@ -3,12 +3,13 @@ package sde.com.icar.model.car
 import java.io.Serializable
 
 data class Car(
-    val brand: String,
-    val color: String,
-    val lat: Double,
-    val lng: Double,
-    val model: String,
-    val ownerId: String,
-    val registration: String,
-    val year: String
+        var _id: String? = null,
+        var brand: String? = null,
+        var color: String = "#00000a",
+        var lat: Double = 0.0,
+        var lng: Double = 0.0,
+        var model: String? = null,
+        var ownerId: String = "0",
+        var registration: String? = null,
+        var year: String? = null
 ) : Serializable

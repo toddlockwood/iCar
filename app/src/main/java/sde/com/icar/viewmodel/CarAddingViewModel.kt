@@ -15,14 +15,13 @@ import sde.com.icar.model.NetworkUtil
 import sde.com.icar.model.car.Car
 import sde.com.icar.model.data.BasicAuth
 import sde.com.icar.model.data.ICarService
-import java.util.*
 
-class CarListViewModel : ViewModel() {
+class CarAddingViewModel : ViewModel() {
 
-    private val mDiscoveredCars = MutableLiveData<MutableList<Car>?>()
-    private val mErrorMessage = MutableLiveData<String?>()
-
+    private var mCar: Car? = null
     private var mCarService: ICarService? = null
+    private val mErrorMessage = MutableLiveData<String?>()
+    private var mIsCarAdded: MutableLiveData<Boolean?>? = MutableLiveData()
 
     private fun initServices() {
         val gson = GsonBuilder().setDateFormat("YYYY-MM-DD'T'HH:MM:SSZ").create()
@@ -39,37 +38,35 @@ class CarListViewModel : ViewModel() {
         mCarService = retrofit.create(ICarService::class.java)
     }
 
-    fun discoverCarList() {
-        mCarService!!.getCars()!!.enqueue(object : Callback<List<Car>?> {
-            override fun onResponse(call: Call<List<Car>?>, response: Response<List<Car>?>) {
+    fun createCar() {
+        if (mCar == null) {
+            return
+        }
+
+        mCarService!!.createCar(mCar)!!.enqueue(object : Callback<Car?> {
+            override fun onResponse(call: Call<Car?>, response: Response<Car?>) {
                 if (!response.isSuccessful) {
                     showError(NetworkUtil.onApiResponseError(response))
                     return
                 }
-                var currentList: MutableList<Car>? = null
-                currentList = ArrayList()
-
-                if (response.body() != null) {
-                    currentList.addAll(response.body()!!)
-                }
-                mDiscoveredCars.postValue(currentList)
+                mIsCarAdded!!.postValue(true)
             }
 
-            override fun onFailure(call: Call<List<Car>?>, t: Throwable) {
+            override fun onFailure(call: Call<Car?>, t: Throwable) {
                 showError(t.localizedMessage)
             }
         })
     }
 
-
-    val discoveredCars: LiveData<MutableList<Car>?>
-        get() {
-            discoverCarList()
-            return mDiscoveredCars
-        }
+    val carAddedB: LiveData<Boolean?>?
+        get() = mIsCarAdded
 
     private fun showError(message: String) {
         mErrorMessage.postValue(message)
+    }
+
+    fun setCar(car: Car?) {
+        this.mCar = car
     }
 
     init {
@@ -78,8 +75,5 @@ class CarListViewModel : ViewModel() {
     }
 
     private fun init() {
-        mDiscoveredCars.value = null
-        mErrorMessage.value = null
     }
-
 }

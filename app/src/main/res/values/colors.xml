@@ -6,4 +6,7 @@
 
     <color name="primary_text_color">#000000</color>
     <color name="image_border_color">#3E3D3D</color>
+    <color name="image_no_color">#00FFFFFF</color>
+
+    <color name="button_background_color">#63ace5</color>
 </resources>

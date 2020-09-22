@@ -3,4 +3,13 @@
     <string name="Brand">Brand</string>
     <string name="Model">Model</string>
     <string name="RegNum">RegNum</string>
+    <string name="Car">Car</string>
+    <string name="Owner">Owner</string>
+    <string name="addCar">Add Car</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="btn_text_save">Save Car</string>
+    <string name="btn_text_select_date">Select date</string>
+    <string name="Date">Date</string>
+    <string name="Registration">Registration</string>
 </resources>

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/item_car_main_marginStartEnd"
         android:layout_marginEnd="@dimen/item_car_main_marginStartEnd"
-        android:background="@drawable/shape_item_rounded"
+        app:cardBackgroundColor="@color/image_no_color"
         app:cardCornerRadius="@dimen/item_car_corner_radius"
         app:cardElevation="@dimen/item_car_cv_elevation"
         app:cardUseCompatPadding="true"
@@ -24,10 +24,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_item_rounded"
             android:gravity="center_vertical"
+            android:background="@drawable/shape_item_rounded"
             android:orientation="horizontal"
-            android:padding="@dimen/item_car_content_padding">
+            >
 
                 <ImageView
                     android:id="@+id/ivColor"
